@@ -59,7 +59,7 @@ private class AKCollectionViewCell: UICollectionViewCell {
 	var imageView: UIImageView!
 	var font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
 	var highlightedFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-	var _selected: Bool = false {
+	override var isSelected: Bool  {
 		didSet(selected) {
 			let animation = CATransition()
 			animation.type = kCATransitionFade
@@ -534,7 +534,7 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
 		} else if let image = self.dataSource?.pickerView?(self, imageForItem: indexPath.item) {
 			cell.imageView.image = image
 		}
-		cell._selected = (indexPath.item == self.selectedItem)
+		cell.isSelected = (indexPath.item == self.selectedItem)
 		return cell
 	}
 
